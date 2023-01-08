@@ -37,13 +37,16 @@
 </head>
 <body>
 
-{% include 'inc/_header.html' %}
+ <div id="wrapper">
+    {% include 'inc/_header.html' %}
 
-{% block content %}Base{% endblock content %}
+    {% block content %}Base{% endblock content %}
 
-{% include 'inc/_footer.html' %}
+    {% include 'inc/_footer.html' %}
 
-<a href="#" class="scrollup"><i class="icon-angle-up icon-square icon-bglight icon-2x active"></i></a>
+    <a href="#" class="scrollup"><i class="icon-angle-up icon-square icon-bglight icon-2x active"></i></a>
+
+ </div>
 
 <!-- javascript
   ================================================== -->
