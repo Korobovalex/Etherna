@@ -1,0 +1,169 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block content %}
+
+    <!--  News list content  -->
+    <section id="inner-headline">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <div class="inner-heading">
+                        {% include 'inc/_breadcrumbs.html' %}
+                        <h2>Our news</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="content">
+        <div class="container">
+            <div class="row">
+
+                <div class="span12">
+
+                    {% for item in news %}
+                    <article>
+                        <div class="row">
+
+                            <div class="span8">
+                                <div class="post-image">
+                                    <div class="post-heading">
+                                        <h3><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>
+                                    </div>
+                                    {% if item.image %}
+                                        <img src="{{ item.image.url }}" alt="{{ item.title }}"/>
+                                    {% else %}
+                                        <img src="{% static 'media/no_post_image.jpg' %}" alt="{{ item.title }}"/>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="span4">
+                                <div class="meta-post">
+                                    <ul>
+                                        <li><i class="icon-file"></i></li>
+                                        <li>By <a href="#" class="author">{{ item.author }}</a></li>
+                                        <li>On <a href="#" class="date">{{ item.created_at|date:'j E Y' }}</a></li>
+                                        {% if item.tags %}
+                                        <li>Tags: {% for tag in item.tags.all %}<a href="#">{{ tag.title }}</a></li>
+                                        {% endfor %}
+                                        <li>Type: <a href="">{% if item.type == AR %}Article{% elif item.type == VI %}Video{% else %}News{% endif %}</a></li>
+                                        <li>Category: <a href="">{{ item.category }}</a></li>
+                                        <li>Views: <span>{{ item.views }}</span></li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                                <div class="post-entry">
+                                    <p>{{ item.text|safe|truncatewords:'50' }}</p>
+                                    <a href="#" class="readmore">Read more <i class="icon-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    {% endfor %}
+
+                    <article>
+                        <div class="row">
+
+                            <div class="span8">
+                                <div class="post-slider">
+                                    <div class="post-heading">
+                                        <h3><a href="#">This is an example of slider post format</a></h3>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <!-- start flexslider -->
+                                    <div class="flexslider">
+                                        <ul class="slides">
+                                            <li>
+                                                <img src="{% static 'img/dummies/blog/img1.jpg' %}" alt=""/>
+                                            </li>
+                                            <li>
+                                                <img src="{% static 'img/dummies/blog/img2.jpg' %}" alt=""/>
+                                            </li>
+                                            <li>
+                                                <img src="{% static 'img/dummies/blog/img3.jpg' %}" alt=""/>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- end flexslider -->
+                                </div>
+
+
+                            </div>
+                            <div class="span4">
+                                <div class="meta-post">
+                                    <ul>
+                                        <li><i class="icon-picture"></i></li>
+                                        <li>By <a href="#" class="author">Admin</a></li>
+                                        <li>On <a href="#" class="date">10 Jun, 2013</a></li>
+                                        <li>Tags: <a href="#">Design</a>, <a href="#">Blog</a></li>
+                                    </ul>
+                                </div>
+                                <div class="post-entry">
+                                    <p>
+                                        Qui ut ceteros comprehensam. Cu eos sale sanctus eligendi, id ius elitr saperet, ocurreret
+                                        pertinacia pri an. No
+                                        mei nibh consectetuer, semper laoreet perfecto ad qui, est rebum nulla argumentum ei. Fierent
+                                        adipisci iracundia
+                                        est ei, usu timeam persius
+                                        ea. Usu ea justo malis, pri quando everti electram ei, ex homero omittam salutatus...
+                                    </p>
+                                    <a href="#" class="readmore">Read more <i class="icon-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article>
+                        <div class="row">
+
+                            <div class="span8">
+                                <div class="post-video">
+                                    <div class="post-heading">
+                                        <h3><a href="#">Amazing video post format here</a></h3>
+                                    </div>
+                                    <div class="video-container">
+                                        <iframe src="http://player.vimeo.com/video/30585464?title=0&amp;byline=0"></iframe>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="span4">
+                                <div class="meta-post">
+                                    <ul>
+                                        <li><i class="icon-facetime-video"></i></li>
+                                        <li>By <a href="#" class="author">Admin</a></li>
+                                        <li>On <a href="#" class="date">10 Jun, 2013</a></li>
+                                        <li>Tags: <a href="#">Design</a>, <a href="#">Blog</a></li>
+                                    </ul>
+                                </div>
+                                <div class="post-entry">
+                                    <p>
+                                        Qui ut ceteros comprehensam. Cu eos sale sanctus eligendi, id ius elitr saperet, ocurreret
+                                        pertinacia pri an. No
+                                        mei nibh consectetuer, semper laoreet perfecto ad qui, est rebum nulla argumentum ei. Fierent
+                                        adipisci iracundia
+                                        est ei, usu timeam persius
+                                        ea. Usu ea justo malis, pri quando everti electram ei, ex homero omittam salutatus...
+                                    </p>
+                                    <a href="#" class="readmore">Read more <i class="icon-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    {% if is_paginated %}
+                    {% include 'inc/_pagination.html' %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--  / News list content  -->
+
+{% endblock content %}

@@ -2,11 +2,14 @@ from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 from .models import Post, Category, Tag
+from .forms import NewsForm
 from django.db.models import F
 from django.urls import reverse_lazy
+from django.utils.text import slugify
 
 
 # Create your views here.
@@ -41,11 +44,9 @@ class NewsDetailView(DetailView):
         return context
 
 
-class NewsCreateView(CreateView):
-    model = Post
+class NewsCreateView(LoginRequiredMixin, CreateView):
+    form_class = NewsForm
     template_name = 'news_form.html'
-    fields = '__all__'
-    # fields = ['title', 'tex]
     success_url = reverse_lazy('news')
 
     def get_context_data(self, **kwargs):
@@ -53,11 +54,16 @@ class NewsCreateView(CreateView):
         context['title'] = 'Add new post'
         return context
 
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        form.instance.slug = slugify(form.instance.title, allow_unicode=True)
+        return super().form_valid(form)
 
-class NewsEditView(UpdateView):
+
+class NewsEditView(LoginRequiredMixin, UpdateView):
     model = Post
     template_name = 'news_form.html'
-    fields = '__all__'
+    form_class = NewsForm
     success_url = reverse_lazy('news')
 
     def get_context_data(self, **kwargs):
@@ -77,3 +83,6 @@ class NewsDeleteView(DeleteView):
         context['title'] = 'Delete post'
         return context
 
+
+class CategoryNewsList(ListView):
+    template_name = 'list_by_category.html'

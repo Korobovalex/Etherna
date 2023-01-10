@@ -1,5 +1,6 @@
 <!-- start header -->
 {% load static %}
+{% load cache %}
 <header>
     {% include 'inc/_topbar.html' %}
     <div class="container">
@@ -14,7 +15,9 @@
                 <div class="navbar navbar-static-top">
                     <div class="navigation">
                         <nav>
-                            {% include 'inc/_topnav.html' %}
+                            {% cache 20 nav %}
+                                {% include 'inc/_topnav.html' %}
+                            {% endcache nav %}
                         </nav>
                     </div>
                     <!-- end navigation -->

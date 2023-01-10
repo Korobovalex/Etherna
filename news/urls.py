@@ -8,6 +8,6 @@ urlpatterns = [
     path('post/<str:slug>/', views.NewsDetailView.as_view(), name='post'),
     path('post/<str:slug>/edit/', views.NewsEditView.as_view(), name='edit'),
     path('post/<str:slug>/delete/', views.NewsDeleteView.as_view(), name='delete'),
-    # News operations
-
+    # News filters
+    path('category/<str:slug>/', views.CategoryNewsList.as_view(), name='category'),
 ]

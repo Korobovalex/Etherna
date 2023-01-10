@@ -25,12 +25,11 @@ class PostAdmin(admin.ModelAdmin):
     list_display_links = ('title', 'thumbnail')
     search_fields = ('title', 'category', 'tags')
     list_filter = ('category', 'tags')
-    fields = ('title', 'slug', 'text', 'category', 'tags', 'image', 'views', 'created_at')
+    fields = ('title', 'slug', 'text', 'category', 'tags', 'image', 'views', 'created_at', 'author')
     prepopulated_fields = {'slug': ('title',)}
-    # save_as = True
+    save_as = True
     save_on_top = True
     readonly_fields = ('created_at', 'views')
-
 
     def thumbnail(self, obj):
         if obj.image:

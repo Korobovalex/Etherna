@@ -51,7 +51,7 @@ class Tag(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse_lazy('category', kwargs={'slug': self.slug})
+        return reverse_lazy('tag', kwargs={'slug': self.slug})
 
 
 class Post(models.Model):
@@ -68,7 +68,7 @@ class Post(models.Model):
     type = models.CharField(max_length=2, choices=TYPES, default=ARTICLE)
     image = models.ImageField(upload_to='images/%Y/%m/%d', blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    slug = models.SlugField(max_length=255, unique=True)
+    slug = models.SlugField(max_length=255, unique=True, )
     created_at = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='posts')
     tags = models.ManyToManyField(Tag, related_name='posts', blank=True)

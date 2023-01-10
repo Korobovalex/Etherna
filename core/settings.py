@@ -131,3 +131,11 @@ MEDIA_URL = '/media/'
 
 # Debug toolbar
 INTERNAL_IPS = ['127.0.0.1']
+
+# Cache settings
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': os.path.join(BASE_DIR, '.cache'),
+    }
+}

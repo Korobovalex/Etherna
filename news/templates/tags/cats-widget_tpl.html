@@ -1,0 +1,10 @@
+<div class="widget">
+
+    <h5 class="widgetheading">Categories</h5>
+
+    <ul class="cat">
+        {% for category in categories %}
+            <li><i class="icon-angle-right"></i> <a href="#">{{ category.title }}</a><span> ({{ category.posts_count }})</span></li>
+        {% endfor %}
+    </ul>
+</div>
