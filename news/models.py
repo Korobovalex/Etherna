@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import Sum
+from django.urls import reverse_lazy
 
 
 # Create your models here.
@@ -35,6 +36,9 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse_lazy('category', kwargs={'slug': self.slug})
+
 
 class Tag(models.Model):
     title = models.CharField(max_length=255)
@@ -42,6 +46,12 @@ class Tag(models.Model):
 
     class Meta:
         ordering = ['title']
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse_lazy('category', kwargs={'slug': self.slug})
 
 
 class Post(models.Model):
@@ -56,7 +66,7 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     text = models.TextField(blank=True)
     type = models.CharField(max_length=2, choices=TYPES, default=ARTICLE)
-    image = models.ImageField(upload_to='images/%/%m/%d', blank=True)
+    image = models.ImageField(upload_to='images/%Y/%m/%d', blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     slug = models.SlugField(max_length=255, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -79,6 +89,9 @@ class Post(models.Model):
     def dislike(self):
         self.rating -= 1
         self.save()
+
+    def get_absolute_url(self):
+        return reverse_lazy('post', kwargs={'slug': self.slug})
 
 
 class Comment(models.Model):

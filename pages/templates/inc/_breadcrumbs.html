@@ -1,0 +1,18 @@
+{% url 'home' as home_url %}
+{% url 'about' as about_url %}
+{% url 'contact' as contact_url %}
+{% url 'news' as news_url %}
+{% url 'post' as post_url %}
+<ul class="breadcrumb">
+    <li><a href="{{ home_url }}">Home</a> <i class="icon-angle-right"></i></li>
+    {% if request.path == about_url %}
+        <li class="active">{{ title }}</li>
+        {% elif request.path == contact_url %}
+        <li class="active">{{ title }}</li>
+    {% elif request.path == news_url %}
+        <li class="active">{{ title }}</li>
+    {% elif request.path == post_url %}
+        <li><a href="{{ news_url }}">News</a> <i class="icon-angle-right"></i></li>
+        <li class="active">{{ post.title }}</li>
+    {% endif %}
+</ul>

@@ -1,15 +1,18 @@
 <ul class="nav topnav">
-    <li class="active">
-        <a href="{% url 'home' %}"><i class="icon-home"></i> Home <i class="icon-angle-down"></i></a>
-
+    {% url 'home' as home_url %}
+    <li {% if request.path == home_url %} class="active"{% else %}{% endif %}>
+        <a href="{{ home_url }}"><i class="icon-home"></i> Home</a>
     </li>
-    <li>
-        <a href="{% url 'about' %}"><i class="icon-info"></i> About</a>
+    {% url 'about' as about_url %}
+    <li {% if request.path == about_url %} class="active"{% else %}{% endif %}>
+        <a href="{{ about_url }}"><i class="icon-info"></i> About</a>
+    </li >
+    {% url 'news' as news_url %}
+    <li {% if request.path == news_url %} class="active" {% else %}{% endif %}>
+        <a href="{{ news_url }}">News</a>
     </li>
-    <li>
-        <a href="{% url 'news' %}">News</a>
-    </li>
-    <li>
-        <a href="{% url 'contact' %}">Contact</a>
+    {% url 'contact' as contact_url %}
+    <li {% if request.path == contact_url %} class="active"{% else %}{% endif %}>
+        <a href="{{ contact_url }}">Contact</a>
     </li>
 </ul>

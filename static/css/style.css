@@ -2770,3 +2770,9 @@ ul.the-icons {
 }
 
 /* Theme Styler :: End */
+
+/* Custom styles */
+
+.top .row {
+  margin-top: 0;
+}

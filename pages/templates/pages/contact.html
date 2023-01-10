@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-Home
+    {{ title }}
 {% endblock title %}
 
 {% block content %}
@@ -13,10 +13,7 @@ Home
             <div class="row">
                 <div class="span12">
                     <div class="inner-heading">
-                        <ul class="breadcrumb">
-                            <li><a href="index.html">Home</a> <i class="icon-angle-right"></i></li>
-                            <li class="active">Contact</li>
-                        </ul>
+                        {% include 'inc/_breadcrumbs.html' %}
                         <h2>Get in touch</h2>
                     </div>
                 </div>
