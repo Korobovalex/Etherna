@@ -1,0 +1,60 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block content %}
+
+    <!--  News form content  -->
+    <section id="inner-headline">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <div class="inner-heading">
+                        {% include 'inc/_breadcrumbs.html' %}
+                        <h2>Delete post</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="span8">
+                    <h4 class="text-error"><strong>Are you sure you want to delete the post "{{ post.title }}" ?</strong></h4>
+
+                    <div id="sendmessage">Your message has been sent. Thank you!</div>
+                    <div id="errormessage"></div>
+                    <form action="{% url 'add' %}" method="POST">
+                        {% csrf_token %}
+                        {{ form }}
+                        <button type="submit" class="btn btn-danger btn-medium margintop10" >delete post <i class="icon-ban-circle"></i></button>
+                    </form>
+                </div>
+                <div class="span4">
+                    <div class="clearfix"></div>
+                    <aside class="right-sidebar">
+
+                        <div class="widget">
+                            <h5 class="widgetheading">Contact information<span></span></h5>
+
+                            <ul class="contact-info">
+                                <li><label>Address :</label> Tinggi sekali tower Jl.Kemacetan timur<br /> Jakarta selatan - Indonesia</li>
+                                <li><label>Phone :</label>+62 123 456 78 / +62 123 456 79</li>
+                                <li><label>Fax : </label>+62 123 456 10 / +62 123 456 11</li>
+                                <li><label>Email : </label> info@yourdomain.com</li>
+                            </ul>
+
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--  News form content  -->
+
+{% endblock content %}

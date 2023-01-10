@@ -16,6 +16,10 @@
                     {% include 'inc/_breadcrumbs.html' %}
 
                     <h2>{{ post.title }}</h2>
+                    <div class="actions">
+                        <a href="{% url 'edit' post.slug %}" class="btn btn-warning">Edit post <i class="icon-edit"></i></a>
+                        <a href="{% url 'delete' post.slug %}" class="btn btn-danger">delete post <i class="icon-ban-circle"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -36,7 +40,12 @@
                                 <div class="post-heading">
                                     <h3><a href="#">{{ post.title }}</a></h3>
                                 </div>
-                                <img src="{{ post.image.url }}" alt="{{ post.title }}"/>
+                                    {% if post.image %}
+                                        <img src="{{ post.image.url }}" alt="{{ post.title }}"/>
+                                    {% else %}
+                                        <img src="{% static '/img/no_post_image.jpg' %}" alt="{{ post.title }}"/>
+                                    {% endif %}
+
                             </div>
                             <div class="meta-post">
                                 <ul>
@@ -83,7 +92,7 @@
 
                     <h4>4 Comments</h4>
                     <div class="media">
-                        <a href="#" class="pull-left"><img src="img/avatar.png" alt="" class="img-circle"/></a>
+                        <a href="#" class="pull-left"><img src="{% static 'img/avatar.png' %}" alt="" class="img-circle"/></a>
                         <div class="media-body">
                             <div class="media-content">
                                 <h6><span>March 12, 2013</span> Michael Simpson</h6>
@@ -98,7 +107,7 @@
                         </div>
                     </div>
                     <div class="media">
-                        <a href="#" class="pull-left"><img src="img/avatar.png" alt="" class="img-circle"/></a>
+                        <a href="#" class="pull-left"><img src="{% static 'img/avatar.png' %}" alt="" class="img-circle"/></a>
                         <div class="media-body">
                             <div class="media-content">
                                 <h6><span>March 12, 2013</span> Smith karlsen</h6>
@@ -111,7 +120,7 @@
                                 <a href="#" class="align-right">Reply</a>
                             </div>
                             <div class="media">
-                                <a href="#" class="pull-left"><img src="img/avatar.png" alt="" class="img-circle"/></a>
+                                <a href="#" class="pull-left"><img src="{% static 'img/avatar.png' %}" alt="" class="img-circle"/></a>
                                 <div class="media-body">
                                     <div class="media-content">
                                         <h6><span>June 22, 2013</span> Jay Moeller</h6>
@@ -129,7 +138,7 @@
                         </div>
                     </div>
                     <div class="media">
-                        <a href="#" class="pull-left"><img src="img/avatar.png" alt="" class="img-circle"/></a>
+                        <a href="#" class="pull-left"><img src="{% static 'img/avatar.png' %}" alt="" class="img-circle"/></a>
                         <div class="media-body">
                             <div class="media-content">
                                 <h6><span>June 24, 2013</span> Dean Zaloza</h6>

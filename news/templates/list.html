@@ -37,7 +37,9 @@
                                         <h3><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>
                                     </div>
                                     {% if item.image %}
-                                    <img src="{{ item.image.url }}" alt="{{ item.title }}"/>
+                                        <img src="{{ item.image.url }}" alt="{{ item.title }}"/>
+                                    {% else %}
+                                        <img src="{% static 'media/no_post_image.jpg' %}" alt="{{ item.title }}"/>
                                     {% endif %}
                                 </div>
                             </div>
@@ -50,6 +52,7 @@
                                         {% if item.tags %}
                                         <li>Tags: {% for tag in item.tags.all %}<a href="#">{{ tag.title }}</a></li>
                                         {% endfor %}
+                                        <li>Type: <a href="">{% if item.type == AR %}Article{% elif item.type == VI %}Video{% else %}News{% endif %}</a></li>
                                         <li>Category: <a href="">{{ item.category }}</a></li>
                                         <li>Views: <span>{{ item.views }}</span></li>
                                         {% endif %}

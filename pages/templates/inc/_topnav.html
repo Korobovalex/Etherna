@@ -1,18 +1,30 @@
 <ul class="nav topnav">
     {% url 'home' as home_url %}
-    <li {% if request.path == home_url %} class="active"{% else %}{% endif %}>
+    <li {% if request.path == home_url %} class="active" {% else %}{% endif %}>
         <a href="{{ home_url }}"><i class="icon-home"></i> Home</a>
     </li>
     {% url 'about' as about_url %}
-    <li {% if request.path == about_url %} class="active"{% else %}{% endif %}>
+    <li {% if request.path == about_url %} class="active" {% else %}{% endif %}>
         <a href="{{ about_url }}"><i class="icon-info"></i> About</a>
-    </li >
+    </li>
     {% url 'news' as news_url %}
-    <li {% if request.path == news_url %} class="active" {% else %}{% endif %}>
-        <a href="{{ news_url }}">News</a>
+    <li class="dropdown {% if request.path == news_url %} active {% else %}{% endif %}">
+        <a href="{{ news_url }}"> News <i class="icon-angle-down"></i></a>
+        <ul class="dropdown-menu">
+            <li><a href="{% url 'add' %}">Add post</a></li>
+        </ul>
     </li>
     {% url 'contact' as contact_url %}
-    <li {% if request.path == contact_url %} class="active"{% else %}{% endif %}>
+    <li {% if request.path == contact_url %} class="active" {% else %}{% endif %}>
         <a href="{{ contact_url }}">Contact</a>
+    </li>
+    <li class="dropdown">
+        <a href="index.html"><i class="icon-user"></i> User <i class="icon-angle-down"></i></a>
+        <ul class="dropdown-menu">
+            <li><a href="index-alt2.html">Login</a></li>
+            <li><a href="index-alt3.html">Register</a></li>
+            <li><a href="index-alt4.html">Parallax slider</a></li>
+            <li><a href="index-landingpage.html">Landing page</a></li>
+        </ul>
     </li>
 </ul>
