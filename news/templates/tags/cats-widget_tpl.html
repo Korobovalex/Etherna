@@ -4,7 +4,7 @@
 
     <ul class="cat">
         {% for category in categories %}
-            <li><i class="icon-angle-right"></i> <a href="#">{{ category.title }}</a><span> ({{ category.posts_count }})</span></li>
+            <li><i class="icon-angle-right"></i> <a href="{% url 'category' category.slug %}">{{ category.title }}</a><span> ({{ category.posts_count }})</span></li>
         {% endfor %}
     </ul>
 </div>

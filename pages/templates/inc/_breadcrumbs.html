@@ -21,6 +21,6 @@
         <li class="active">{{ title }}</li>
     {% elif request.path == category_url %}
         <li><a href="{{ news_url }}">News</a> <i class="icon-angle-right"></i></li>
-        <li class="active">{{ title }}</li>
+        <li class="active">Category {{ title }}</li>
     {% endif %}
 </ul>
