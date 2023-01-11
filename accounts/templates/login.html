@@ -1,0 +1,43 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block content %}
+<h2>Login</h2>
+
+<!--<form method="post">-->
+<!--    {{% csrf_token %}-->
+
+<!--    {{ form.as_p }}-->
+<!--    <button class="btn" type="submit">Login</button>-->
+<!--</form>-->
+    <!-- Login content -->
+    <section class="login">
+        <div class="container">
+        <!--  / Login box  -->
+        <div class="user signinBx">
+            <div class="imgBx">
+                <img src="{% static 'img/dummies/works/1.jpg' %}" alt="" />
+            </div>
+            <div class="formBx">
+                <form method="post">
+                    {% csrf_token %}
+
+                    <h2>Log in</h2>
+                    {{ form.as_p }}
+<!--                    <input type="text" placeholder="Username">-->
+<!--                    <input type="password" placeholder="Password">-->
+                    <button type="submit" class="btn btn-success btn-medium margintop10">Login</button>
+<!--                    <p class="signup">Don't have an account? <a href="">Sign up</a></p>-->
+                </form>
+            </div>
+        </div>
+        <!--  / Login box  -->
+    </div>
+    </section>
+
+    <!-- / Login content -->
+{% endblock content %}

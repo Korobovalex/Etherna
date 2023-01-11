@@ -14,7 +14,9 @@ from env.vars import SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1'
+]
 
 
 # Application definition
@@ -29,6 +31,7 @@ INSTALLED_APPS = [
 
     # Apps
     'pages',
+    'accounts',
     'news',
     'debug_toolbar',
     'tinymce',
@@ -51,8 +54,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'pages/templates'),
+            # os.path.join(BASE_DIR, 'accounts/templates'),
             os.path.join(BASE_DIR, 'news/templates'),
+            os.path.join(BASE_DIR, 'pages/templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -139,3 +143,8 @@ CACHES = {
         'LOCATION': os.path.join(BASE_DIR, '.cache'),
     }
 }
+
+# Auth settings
+LOGIN_URL = 'login'
+LOGOUT_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'profile'

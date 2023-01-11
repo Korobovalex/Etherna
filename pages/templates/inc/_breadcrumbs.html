@@ -5,6 +5,7 @@
 {% url 'post' as post_url %}
 {% url 'add' as add_url %}
 {% url 'category' as category_url %}
+{% url 'profile' as profile_url %}
 <ul class="breadcrumb">
     <li><a href="{{ home_url }}">Home</a> <i class="icon-angle-right"></i></li>
     {% if request.path == about_url %}
@@ -22,5 +23,8 @@
     {% elif request.path == category_url %}
         <li><a href="{{ news_url }}">News</a> <i class="icon-angle-right"></i></li>
         <li class="active">Category {{ title }}</li>
+    {% elif request.path == profile_url %}
+<!--        <li><a href="{{ news_url }}">News</a> <i class="icon-angle-right"></i></li>-->
+        <li class="active">Profile</li>
     {% endif %}
 </ul>

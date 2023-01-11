@@ -1,0 +1,37 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}
+    Login
+{% endblock title %}
+
+{% block content %}
+    <!-- Login content -->
+    <section class="login">
+        <div class="container">
+                <!--  Register box  -->
+        <div class="user signupBx">
+            <div class="imgBx">
+                <img src="{% static 'img/dummies/works/7.jpg' %}" alt="" />
+            </div>
+            <div class="formBx">
+                <form action="" method="post">
+                    {{% csrf_token %}
+
+                    <h2>Create an account</h2>
+                    <input type="text" placeholder="Username">
+                    <input type="email" placeholder="email address">
+                    <input type="password" placeholder="Password">
+                    <input type="password" placeholder="Confirm password">
+                    <input type="password" placeholder="Password">
+                    <button type="submit" class="btn btn-theme btn-medium margintop10">Sign up</button>
+                    <p class="signup">Already have an account? <a href="">Log in</a></p>
+                </form>
+            </div>
+        </div>
+        <!--  /Register box  -->
+    </div>
+    </section>
+
+    <!-- / Login content -->
+{% endblock content %}
